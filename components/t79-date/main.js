@@ -5,8 +5,17 @@ t79.date.selections = {
   default : "local",
 }
 
+t79.date.setZone = (sel, timeZone) => {
+  t79.date.selections[sel] = timeZone;
+  const t79s = [...document.getElementsByTagName("t79-date")];
+
+  for(let t79 of t79s){
+    t79.refresh();
+  }
+}
+
 /**
- * the <tailor-date> component
+ * the <t79-date> component
  */
 t79.date.T79Date = class extends HTMLElement{
   constructor(){
@@ -14,6 +23,10 @@ t79.date.T79Date = class extends HTMLElement{
   }
 
   connectedCallback(){
+    this.refresh()
+  }
+
+  refresh(){
     this._checkUTCTimeSpecified()
     this._checkDatetimeFormat()
     this._setTimeVisual()
@@ -69,14 +82,36 @@ t79.date.T79Date = class extends HTMLElement{
   }
 
   _setTimeVisual(){
-    const shadowRoot = this.attachShadow({mode : "closed"})
-    const timeSpan = document.createElement("span")
+    let newShadowRoot = false;
+    if(!this.shadowRoot) {
+      newShadowRoot = true;
+      this.attachShadow({mode : "open"})
+    }
+    if(!this.timeSpan) this.timeSpan = document.createElement("span")
     const selections = t79.date.selections;
-    timeSpan.innerText = this.utctime.setLocale().toLocaleString(luxon.DateTime[this.format])
-    shadowRoot.append(timeSpan)
+    this.timeSpan.innerText = this.utctime.setZone(selections[this.sel]).toLocaleString(luxon.DateTime[this.format])
+    if(newShadowRoot) this.shadowRoot.append(this.timeSpan)
   }
 }
 
 
+/**
+ * the t79-date-set component
+ */
+t79.date.T79DateSet = class extends HTMLElement{
+  connectedCallback(){
+    t79.date.setZone(this.sel, this.timezone);
+  }
+
+  get sel(){
+    return this.getAttribute("sel")||"default"
+  }
+
+  get timezone(){
+    return this.getAttribute("timezone")
+  }
+}
+
 
 customElements.define("t79-date", t79.date.T79Date);
+customElements.define("t79-date-set", t79.date.T79DateSet);

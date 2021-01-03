@@ -70,7 +70,7 @@ for setting the time zones for some selections
 
 Parameters:
 - **sel** : the t79-date selections that this timezone should apply to, if the keyword "default" is used, sets the global timezone
-- **timezone** : the timezone to set them to
+- **timezone** : the timezone to set them to, see list of timezones here : https://www.timeanddate.com/time/zone/france
 
 example:
 ```js
