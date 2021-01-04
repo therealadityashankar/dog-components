@@ -33,7 +33,7 @@ this tag is used to dynamically set the timezone for a selected set of tags or a
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/luxon@1.25.0/build/global/luxon.min.js" integrity="sha256-OVk2fwTRcXYlVFxr/ECXsakqelJbOg5WCj1dXSIb+nU=" crossorigin="anonymous"></script>
-<script src=""></script>
+<script src="https://cdn.jsdelivr.net/gh/therealadityashankar/t79-components@0.0.3/components/t79-date/main.js" integrity="sha384-1v8YKtd61HQBAfwOl6tYheWGt+WFZoK3rZdUTK2/GJvPC6pSRIzRBGeWJ+/k4u3G" crossorigin="anonymous"></script>
 ```
 
 altenatively you may also get the component locally by downloading it from `components/t79-date/main.js`
