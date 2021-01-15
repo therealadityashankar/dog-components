@@ -75,6 +75,7 @@ example code:
 <t79-date-set sel="tokyo" timezone="Asia/Tokyo"></t79-date-set>
 ```
 
+representation:
 ![t79-date representation](./components/t79-date/visual.png)
 
 ### component javascript api
