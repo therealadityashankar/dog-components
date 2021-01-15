@@ -7,7 +7,7 @@ by default sets the time to the users current time zone, the behaviour can be mo
 ```html
 <t79-date>
 <t79-date-set>
-``` 
+```
 
 ## requirements
 - luxon javascript library, from
@@ -63,7 +63,19 @@ for setting the time zones for some selections
 ```
 
 ### representation image:
-[t79-date representation][./some-path]
+
+example code:
+```html
+<h2> t79-date </h2>
+<t79-date time-utc="2021-01-02T15:50:23Z"></t79-date>
+<br>
+<t79-date time-utc="2021-01-02T07:50:23Z" format="DATETIME_HUGE_WITH_SECONDS"></t79-date>
+
+<h4>Asia/Tokyo time | <t79-date sel="tokyo" time-utc="2021-02-03T06:33:52+00:00" format="DATETIME_HUGE_WITH_SECONDS"></t79-date></h4>
+<t79-date-set sel="tokyo" timezone="Asia/Tokyo"></t79-date-set>
+```
+
+![t79-date representation](./components/t79-date/visual.png)
 
 ### component javascript api
 - t79.date.setZone(sel, timezone)
